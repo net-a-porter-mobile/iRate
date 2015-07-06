@@ -220,6 +220,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         self.remindPeriod = 1.0f;
         self.verboseLogging = NO;
         self.previewMode = NO;
+        self.usesEventsCounts = YES;
 
 #if DEBUG
 
@@ -473,7 +474,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
     }
 
     //check how long we've been using this version
-    else if ([[NSDate date] timeIntervalSinceDate:self.firstUsed] < self.daysUntilPrompt * SECONDS_IN_A_DAY)
+    else if ([[NSDate date] timeIntervalSinceDate:self.firstUsed] < (self.daysUntilPrompt * SECONDS_IN_A_DAY))
     {
         if (self.verboseLogging)
         {
@@ -483,7 +484,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
     }
 
     //check how many times we've used it and the number of significant events
-    else if (self.usesCount < self.usesUntilPrompt && self.eventCount < self.eventsUntilPrompt)
+    else if (self.usesEventsCounts && self.usesCount < self.usesUntilPrompt && self.eventCount < self.eventsUntilPrompt)
     {
         if (self.verboseLogging)
         {
@@ -503,7 +504,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
     }
 
     //check if within the reminder period
-    else if (self.lastReminded != nil && [[NSDate date] timeIntervalSinceDate:self.lastReminded] < self.remindPeriod * SECONDS_IN_A_DAY)
+    else if (self.lastReminded != nil && [[NSDate date] timeIntervalSinceDate:self.lastReminded] < (self.remindPeriod * SECONDS_IN_A_DAY))
     {
         if (self.verboseLogging)
         {

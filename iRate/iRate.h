@@ -153,6 +153,7 @@ typedef NS_ENUM(NSUInteger, iRateErrorCode)
 @property (nonatomic, readonly) BOOL declinedAnyVersion;
 @property (nonatomic, assign) BOOL ratedThisVersion;
 @property (nonatomic, readonly) BOOL ratedAnyVersion;
+@property (nonatomic, assign) BOOL usesEventsCounts;
 @property (nonatomic, weak_delegate) id<iRateDelegate> delegate;
 
 //manually control behaviour
