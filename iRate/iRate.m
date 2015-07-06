@@ -88,8 +88,15 @@ static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://itunes.apple.co
 static NSString *const iRateiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com/app/id%@";
 static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.com/app/id%@";
 
-
+/**
+ * When the debug mode is on, to test the functionality more easily, we convert 1 day to 2 minutes
+ */
+#ifdef DEBUG
+#define SECONDS_IN_A_DAY 120
+#else
 #define SECONDS_IN_A_DAY 86400.0
+#endif
+
 #define SECONDS_IN_A_WEEK 604800.0
 #define MAC_APP_STORE_REFRESH_DELAY 5.0
 #define REQUEST_TIMEOUT 60.0
